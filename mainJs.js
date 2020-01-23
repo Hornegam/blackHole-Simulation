@@ -1,23 +1,27 @@
 //Velocidade da luz
 const c = 30;
 //Peso da gravidade
-const G = 2;
+const G = 1;
 //Delta T
 const dt = 0.1;
 //Massa
 //const m = 6500
 //const rs = 2*G;
+var espacoIMG ;
 let buracoNegro,inicio,fim;
 const particulas = [];
+var windowWidth = 1622;
+var windowHeight = 1152;
+
 function setup(){
-    var windowWidth = window.innerWidth;
-    var windowHeight = window.innerHeight;
+    
 
     createCanvas(windowWidth,windowHeight);
+    background(0);
     ellipseMode(RADIUS);
 
     //x,y onde o buraco negro se posiciona e o terceiro parametro é a massa do buraco negro
-    buracoNegro = new Blackhole((windowWidth-1300),(windowHeight-400),6500);
+    buracoNegro = new Blackhole((windowWidth-900),(windowHeight-200),6500);
 
     //calcula o tamanho da tela em comparação com o buraco negro
     inicio = height/2;
@@ -28,15 +32,19 @@ function setup(){
         particulas.push(new foton(width-20,y));
     }
 }
-
+function preload(){
+    espacoIMG=loadImage('nasa.webp');
+}
 function draw(){
-    background(255);
+   // espacoIMG=loadImage('espaco.jpg');
+    
+
     buracoNegro.show();
 
     stroke(0);
     strokeWeight(1)
     line(0,inicio,width,inicio);
-    //line(0,fim,width,fim);
+    line(0,fim,width,fim);
 
     for(let p of particulas){
         buracoNegro.atrair(p);

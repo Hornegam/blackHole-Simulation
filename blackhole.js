@@ -30,7 +30,7 @@ class Blackhole{
         //completa o buraco negro
         fill(0);
         //Para não ter a linha em volta
-        noStroke();
+        stroke(28,28,28);
         //cria um circulo com a posição e tamanho do buraco negro
         circle(this.pos.x,this.pos.y,this.rs);
 
